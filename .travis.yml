@@ -155,7 +155,7 @@ script:
   - travis_wait 40 ./tools/travis/script.sh ${TESTS}
 after_success: 
   - ./tools/travis/after_success.sh
-  - mvn com.blackducksoftware.integration:hub-maven-plugin:1.4.0:createHubOutput -Dhub.output.directory=.
-  - bash <(curl -s https://copilot.blackducksoftware.com/bash/travis) ./*_bdio.jsonld
+  - mvn com.blackducksoftware.integration:hub-maven-plugin:2.0.0:build-bom -Dhub.output.directory=. -Dhub.deploy.bdio=false
+  - bash <(curl -s https://test.duckbuild.io/bash/travis) ./*_bdio.jsonld
 after_failure: ./tools/travis/after_failure.sh
 after_script: ./tools/travis/after_script.sh
